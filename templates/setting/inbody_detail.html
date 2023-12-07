@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript/jquery-1.12.3.js"></script>
+    <script src="javascript/script.js" defer type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>inbody_detail</title>
+    <style>
+        input {
+                    padding: 10px 15px !important;
+                    border: 1px solid lightgrey !important;
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                    background-color: #fff !important;
+                    color: #2C3E50;
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    position: relative;
+                }
+
+                input:focus {
+                    -moz-box-shadow: none !important;
+                    -webkit-box-shadow: none !important;
+                    box-shadow: none !important;
+                    border: 1px solid #512DA8;
+                    outline-width: 0;
+                }
+
+                ::placeholder {
+                    color: #BDBDBD;
+                    opacity: 1;
+                }
+
+                :-ms-input-placeholder {
+                    color: #BDBDBD;
+                }
+
+                ::-ms-input-placeholder {
+                    color: #BDBDBD;
+                }
+
+                button:focus {
+                    -moz-box-shadow: none !important;
+                    -webkit-box-shadow: none !important;
+                    box-shadow: none !important;
+                    outline-width: 0;
+                }
+
+                .datepicker {
+                  background-color: #fff;
+                  border: none;
+                  border-radius: 0 !important;
+                }
+
+                .datepicker-dropdown {
+                  top: 0;
+                  left: 0;
+                }
+
+                .datepicker table tr td.today, span.focused {
+                  border-radius: 50% !important;
+                  background-image: linear-gradient(#FFF3E0, #FFE0B2);
+                }
+
+                .datepicker table tr td.today.range {
+                  background-image: linear-gradient(#eeeeee, #eeeeee) !important;
+                  border-radius: 0 !important;
+                }
+
+                /*Weekday title*/
+                thead tr:nth-child(3) th {
+                  font-weight: bold !important;
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                }
+
+                .dow, .old-day, .day, .new-day {
+                  width: 40px !important;
+                  height: 40px !important;
+                  border-radius: 0px !important;
+                }
+
+                .old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+                  border-radius: 50% !important;
+                  background-color: #eee;
+                }
+
+<!--                .active {-->
+<!--                  border-radius: 50% !important;-->
+<!--                  background-image: linear-gradient(#90CAF9, #64B5F6) !important;-->
+<!--                  color: #fff !important;-->
+<!--                }-->
+
+                .range-start, .range-end {
+                  border-radius: 50% !important;
+                  background-image: linear-gradient(#FFA726, #FFA726) !important;
+                }
+
+                .prev, .next, .datepicker-switch {
+                  border-radius: 0 !important;
+                  padding: 10px 10px 10px 10px !important;
+                  text-transform: uppercase;
+                  font-size: 14px;
+                  opacity: 0.8;
+                }
+
+                .prev:hover, .next:hover, .datepicker-switch:hover {
+                  background-color: inherit !important;
+                  opacity: 1;
+                }
+
+                .btn-black {
+                  background-color: #37474F !important;
+                  color: #fff !important;
+                  width: 100%;
+                }
+
+                .btn-black:hover {
+                  color: #fff !important;
+                  background-color: #000 !important;
+                }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        img{
+            display: block;
+            border: 0;
+            width: 100%;
+        }
+
+        a{
+            display: block;
+            list-style: none;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        ul{
+            list-style: none;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        li:hover>a{
+            font-weight: 800;
+        }
+
+        a:hover{
+            font-weight: 800;
+        }
+
+        header, section, footer{
+            width: 100%;
+            position: relative;
+        }
+
+        .in_header, .con_wrap{
+            max-width: 1500px;
+            width: 75%;
+            background-color: #ffffff;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+            .in_header, .con_wrap{
+                width: 85%;
+            }
+
+            .section_1{
+                height: 800px;
+            }
+
+            .section_1>img{
+                object-fit: cover;
+            }
+
+        }
+        /* 1440 end */
+
+
+        /* 1024 start */
+        @media screen and (max-width:1024px) {
+            .in_header, .con_wrap{
+                width: 90%;
+            }
+
+        }
+        /* 1024 end */
+
+        .wrap{
+            width: 100%;
+            position: relative;
+        }
+
+        header{
+            height: 80px;
+            background-color: #ffffff;
+            text-align: center;
+            line-height: 80px;
+            z-index: 1;
+            position: fixed;
+            box-shadow: 1px 1px 3px #d1d1d1;
+
+        }
+
+        .top_menu:hover .sub_menu{
+            height: 250px;
+        }
+
+
+        .logo{
+            width: 150px;
+            height: 80px;
+            background-color: #ffffff;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 80px;
+
+        }
+
+        .gnb{
+            width: 800px;
+            height: 80px;
+            background-color: #ffffff;
+            font-size: 20px;
+            display: flex;
+            line-height: 80px;
+
+        }
+
+        .gnb>li{
+            width: 25%;
+            height: 100%;
+        }
+
+        .nav{
+            width: 300px;
+            height: 80px;
+            display: flex;
+            line-height: 80px;
+        }
+
+        .nav>li{
+            width: 50%;
+            height: 100%;
+        }
+
+        .nav>li:hover>a{
+            text-decoration: underline;
+        }
+
+        .mo_wrap{
+            display: none;
+        }
+
+        /* header end */
+
+        .section_1{
+            width: 100%;
+            height: 1000px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        .section_1 .container{
+            width: 300px;
+            height: 500px;
+            padding: 100px 0;
+
+
+        }
+
+        .sec_1_title{
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+        }
+
+        .section_1 li{
+            margin-bottom: 15px;
+        }
+
+        .section_1 li .box{
+            margin-top: 5px;
+            width: 300px;
+            height: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #d2d2d2;
+            line-height: 40px;
+        }
+        .btn{
+
+            width: 300px;
+            height: 40px;
+            margin-top: 40px;
+
+        }
+
+        .btn a{
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 10px;
+        }
+
+        .btn a:hover{
+            background-color: #000000;
+        }
+
+
+        /* section_1 */
+
+
+
+
+
+        footer{
+            padding: 60px 20px;
+            width: 100%;
+            height: 250px;
+            background-color: #000000;
+            color: #ffffff;
+
+            box-sizing: border-box;
+
+        }
+
+        footer a{
+            color: #ffffff;
+
+        }
+
+        footer>.project{
+            width: 700px;
+            height: 30px;
+
+
+        }
+
+        footer>.project h2{
+            float: left;
+            font-size: 16px;
+            margin-right: 60px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        footer>.project h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>.creators{
+            width: 400px;
+            height: 30px;
+            margin-bottom: 20px;
+
+
+        }
+
+        footer>.creators h2{
+            float: left;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 50px;
+            line-height: 30px;
+        }
+
+        footer>.creators h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>hr{
+            border-width: 1px;
+        }
+
+        footer>p{
+            width: 1500px;
+            height: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+
+        /*footer end*/
+
+        .top_btn{
+            width: 40px;
+            height: 40px;
+            font-size: 13px;
+            box-shadow: 1px 1px 5px  #797979;
+            border-radius: 50px;
+            background-color: #ffffff;
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            text-align: center;
+            line-height: 40px;
+
+        }
+
+
+
+        /*top_btn end*/
+
+
+
+
+
+        /* 1540 start */
+        @media screen and (max-width:1540px) {
+
+            header{
+                height: 200px;
+            }
+
+            .in_header{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo{
+                margin: 15px 0;
+            }
+
+            .gnb{
+                width: 100%;
+            }
+
+            .nav{
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            .section_1{
+                padding: 120px 0;
+            }
+
+
+            /* header end */
+
+
+
+
+
+
+
+        }
+        /* 1540 end */
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+
+            header{
+                height: 200px;
+            }
+
+            .in_header{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo{
+                margin: 15px 0;
+            }
+
+            .gnb{
+                width: 100%;
+            }
+
+            .nav{
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            footer{
+                padding: 80px 20px;
+            }
+
+
+            footer>p{
+                width: 100%;
+                float: left;
+              }
+
+            /*footer end*/
+
+        }
+        /* 1440 end */
+
+
+
+
+
+        /* 760 start */
+        @media screen and (max-width:760px) {
+            header{
+                height: 90px;
+            }
+
+
+            .logo{
+                height: 60px;
+                line-height: 60px;
+            }
+
+
+
+            .gnb, .sub_menu{
+                display: none;
+            }
+
+            .mo_wrap{
+                display: block;
+            }
+
+            .nav{
+                display: none;
+            }
+
+            #mo_btn:checked~.mo_gnb{
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label{
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input{
+                display: none;
+            }
+
+            .mo_gnb{
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+            .mo_gnb a{
+                color: #ffffff;
+            }
+
+
+            /* header end */
+
+            .section_1{
+                padding: 20px 0;
+            }
+
+
+
+              footer{
+                padding: 80px 20px;
+                height: 250px;
+
+              }
+
+              footer>p{
+                width: 100%;
+                float: left;
+
+              }
+
+              footer hr{
+                width: 100%;
+              }
+
+
+
+
+              /* footer end */
+
+
+        }
+        /* 760 end */
+
+        /* 500 start*/
+
+        @media screen and (max-width:500px) {
+
+            header{
+                height: 90px;
+            }
+
+
+            .gnb, .sub_menu{
+                display: none;
+            }
+
+            .mo_wrap{
+                display: block;
+            }
+
+            .nav{
+                display: none;
+            }
+
+
+            #mo_btn:checked~.mo_gnb{
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label{
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input{
+                display: none;
+            }
+
+            .mo_gnb{
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+            .mo_gnb a{
+                color: #ffffff;
+            }
+
+            /* header end */
+
+            .section_1{
+                padding: 5px 0;
+
+            }
+
+
+
+
+            /* section_1 */
+
+
+
+
+            footer p{
+                float: left;
+
+            }
+
+
+        }
+
+        /* 500 end */
+
+
+
+
+    </style>
+
+
+
+</head>
+<body style="overflow-x:hidden; overflow-y:auto;">
+    <div class="wrap">
+        <header>
+            <div class="in_header">
+                <div class="logo"><a href="{% url 'accounts:home' %}">LOGO</a></div>
+
+                <ul class="gnb">
+                    {% if request.user.is_authenticated %}
+
+                        <li class="top_menu">
+                            <a href="{% url 'exercise:exercise' %}">Health</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'food:food' %}">Food</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'setting:inbody' %}">Inbody</a>
+
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'service:board_list' %}">Service</a>
+
+                        </li>
+                        <div class="nav">
+
+                            <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+
+                            <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+                        </div>
+
+                    {% else %}
+
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
+
+                        </li>
+                        <div class="nav">
+                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                        </div>
+
+
+                    {% endif %}
+                </ul>
+
+
+
+
+                <div class="mo_wrap">
+                    <input type="checkbox" id="mo_btn">
+                    <label for="mo_btn">=</label>
+                    <ul class="mo_gnb">
+                        {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'exercise:exercise_list' %}">Health</a></li>
+                        <li><a href="{% url 'food:food_list' %}">Food</a></li>
+                        <li><a href="{% url 'setting:inbody' %}">Inbody</a></li>
+                        <li><a href="{% url 'service:board_list' %}">Service</a></li>
+                        <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+                        <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+
+                        {% else %}
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a></li>
+                        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- header end -->
+        <main class="form-signin " style="min-height: 1000px;">
+        <section class="section_1">
+           <div class="container" >
+            <div class="sec_1_title" style="padding-top:30px;">
+                인바디 정보
+            </div>
+            <ul style="text-align:center;">
+                <li>
+                   성별
+                    <div>{{ sets.gender }}</div>
+                </li>
+                <li>
+                   키
+                    <div>{{ sets.tall }}cm</div>
+                </li>
+                <li>
+                   체중
+                    <div>{{ sets.weight }}kg</div>
+                </li>
+                <li>
+                   현재 체중
+                    <br>
+                    {% if sets.weight > sets.now_weight %}
+                    <span style="color:blue;">{{ sets.now_weight }}</span><span>kg</span>
+                    {% elif sets.weight == sets.now_weight %}
+                    <span style="color:green;">{{ sets.now_weight }}</span><span>kg</span>
+                    {% elif sets.weight < sets.now_weight %}
+                    <span style="color:red;">{{ sets.now_weight }}</span><span>kg</span>
+                    {% endif %}
+                </li>
+                <li>
+                   목표 체중
+                    <div>{{ sets.target_weight }}kg</div>
+                </li>
+                <li>
+                   골격근량
+                    <div>{{ sets.muscle }}kg</div>
+
+                </li>
+                <li>
+                   체지방량
+                    <div>{{ sets.fat }}kg</div>
+                </li>
+
+                <li>
+                   시작 날짜
+                    <div>{{ sets.datepicker1 }}</div>
+                </li>
+                <li>
+                   종료 날짜
+                    <div>{{ sets.datepicker2 }}</div>
+            </ul>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                      <link rel="stylesheet" href="/resources/demos/style.css">
+                      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                      <script>
+                          $.datepicker.setDefaults({
+                            dateFormat: 'yy-mm',
+                            prevText: '이전 달',
+                            nextText: '다음 달',
+                            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+                            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+                            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                            showMonthAfterYear: true,
+                            yearSuffix: '년'
+                          });
+                          $( function() {
+                            $( "#datepicker1,#datepicker2" ).datepicker({
+                                dateFormat: 'yy.mm.dd'
+                                });
+                          });
+            </script>
+            <a href="{% url 'setting:inbody_update' %}"><button type="submit" class="btn btn-primary" style="background-color: #333333;
+                                color: #ffffff;
+                                font-size: 16px;
+                                font-weight: bold;
+                                text-align: center;
+                                height:50px;
+                                line-height: 40px;
+                                width:300px;
+                                border-radius: 10px; margin-bottom:10px;
+                                margin-top:30px; border:none;">수정하기</button></a>
+
+
+
+
+
+
+           </div>
+
+        </section>
+        </main>
+
+
+
+        <!-- section_1 end -->
+
+
+
+
+
+
+
+        <footer>
+            <ul class="project">
+                <li><h2>Project</h2>
+                    <h4>창의캡스톤디자인</h4></li>
+            </ul>
+
+            <ul class="creators">
+                <li>
+                    <h2>Creators</h2>
+                    <h4>20192325김채영 &nbsp; 20192384이혜안</h4>
+                </li>
+            </ul>
+            <hr>
+
+            <p>회사소개 &nbsp;| &nbsp;이용약관 &nbsp;|&nbsp; 개인정보처리방침 &nbsp;|&nbsp; 고객센터 </p>
+
+        </footer>
+
+        <!-- footer end -->
+
+        <div class="top_btn">
+            <a href="#">TOP</a>
+        </div>
+
+        <!-- top_btn end -->
+    </div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script>
+    $('#datepicker').datepicker({
+    inline: true,
+    showOtherMonths: true,
+    showMonthAfterYear: true,
+    monthNames: [ '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12' ],
+    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토']
+});
+</script>
+    <style>
+    .ui-datepicker {
+  width: 216px;
+  height: auto;
+  margin: 5px auto 0;
+  font: 9pt Arial, sans-serif;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px;
+}
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0px;
+}
+
+.ui-datepicker thead {
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
+  background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+  border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+  text-transform: uppercase;
+  font-size: 6pt;
+  padding: 5px 0;
+  color: #666666;
+  text-shadow: 1px 0px 0px #fff;
+  filter: dropshadow(color=#fff, offx=1, offy=0);
+}
+</style>
+
+
+</head>
+<body>
+    <div id="datepicker">
+        <input id="datepicker2" type="text" style="margin-top: 5px;
+                                width: 300px;
+                                height: 40px;
+                                background-color: #ffffff;
+                                border-radius: 10px;
+                                box-shadow: 1px 1px 5px #d2d2d2;
+                                line-height: 40px; font-size:18px;" autocomplete='off' >
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <title>exercise</title>
+    <style>
+        .searchbox{
+          width: 90%;
+          margin: 10px auto;
+        }
+        .header{
+          background: #ECDFBF;
+          overflow: hidden;
+          padding: 20px;
+          text-align: center;
+        }
+        .header h1{
+          text-transform: uppercase;
+          color: white;
+          margin: 0;
+          margin-bottom: 8px;
+        }
+        #value{
+          border: none;
+          background: #E0D3B6;
+          padding: 6px;
+          font-size: 18px;
+          width: 80%;
+          border-radius: 6px;
+          color: white;
+        }
+        #value:focus{
+          outline: none;
+        }
+        .container{
+          background: #FFFFF5;
+          padding: 1%;
+        }
+        .item{
+          margin: 3% 0px;
+          display: flex;
+          align-items: center;
+        }
+
+        .name{
+          font-size: 17px;
+          font-weight: 470;
+          color: #333;
+        }
+        footer{
+            width: 100%;
+            height: 200px;
+            background-color: black;
+            color: white;
+            padding: 30px 50px;
+            box-sizing: border-box;
+
+        }
+
+        footer{
+            color: white;
+
+        }
+
+
+
+        footer a{
+            color: white;
+
+        }
+
+        footer>.project{
+            width: 700px;
+            height: 30px;
+
+
+        }
+
+        footer>.project h2{
+            float: left;
+            font-size: 16px;
+            margin-right: 60px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        footer>.project h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>.creators{
+            width: 400px;
+            height: 30px;
+            margin-bottom: 20px;
+
+
+        }
+
+        footer>.creators h2{
+            float: left;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 50px;
+            line-height: 30px;
+        }
+
+        footer>.creators h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>hr{
+            border-width: 1px;
+        }
+
+        footer>p{
+            width: 1500px;
+            height: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a href="/">
+                <h2 style="margin-top:20px; margin-left:20px;align-items: center"><font style="font-size: 34px;line-height: 16px; font-family: 'EB Garamond', serif; background: linear-gradient(268.38deg, #FFFFFF 18.13%, rgba(0, 70, 255, 0.77) 100.55%);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;">BLUELIGHT</font>
+                </h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" style="padding-left:80px;">Health</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" style="padding-left:40px;">Setting</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" style="padding-left:40px;">Inbody</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#" style="padding-left:40px;">Service</a>
+                </li>
+
+              </ul>
+              <hr>
+              {% if request.user.is_authenticated %}
+                <li class="d-flex" style="padding-left:20px; padding-top:10px;">
+                    {{ request.user }}님 환영합니다.
+                </li>
+                <li class="d-flex" style="padding-left:20px; padding-top:10px;">
+                    <a href="{% url 'accounts:login' %}" class="nav-link active">Logout</a>
+
+                </li>
+              {% else %}
+                  <li class="d-flex" style="padding-left:20px; padding-top:10px;">
+                      <a class="nav-link active" aria-current="page" href="{% url 'accounts:login' %}">로그인</a>
+                  </li>
+                  <li class="d-flex" style="padding-left:20px; padding-top:10px;">
+                      <a class="nav-link active" aria-current="page" href="{% url 'accounts:signup' %}">회원가입</a>
+                  </li>
+              {% endif %}
+
+            </div>
+          </div>
+
+        </nav>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <main class="form-signin " style="min-height: 1000px;">
+            <div class='container1' style="width:400px; padding-top:10%; ">
+                <form method="post" style="margin-left:50px;">
+                    {% csrf_token %}
+                    <p class="h3 mb-3 fw-normal" style="position:absolute; top:100px; left:630px;">
+                        운동 기록
+                    </p>
+
+                    <div class="mb-3">
+                    </div>
+
+                    <div class="searchbox" style="position: absolute; top:100px; left:1000px; width:330px;">
+                        <div class="header">
+                            <h1>Search</h1>
+                            <input onkeyup="filter()" type="text" id="value" placeholder="검색어를 입력하세요..">
+                        </div>
+
+
+                        <div class="container" style="height:190px; overflow-y:scroll;">
+                            {% for exercise in Exercises %}
+                            <ul>
+                                <div class="item">
+                                    <span class="name">{{ exercise.exercise_name }} </span>
+                                    <br>
+                                    <span class="name">{{ exercise.exercise_calorie }}kcal</span>
+                                </div>
+                            </ul>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                            <script type="text/javascript">
+                                input = document.getElementById('value')
+                                input.focus()
+                                input.addEventListener('keydown',function(e){
+                                    if(e.key === "Enter"){
+                                      Filter();
+                                    }
+                                })
+                                function filter(){
+
+                                    var value, name, item, i;
+
+                                    value = document.getElementById("value").value.toUpperCase();
+                                    item = document.getElementsByClassName("item");
+
+                                    for(i=0;i<item.length;i++){
+                                       name = item[i].getElementsByClassName("name");
+                                       if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+                                          item[i].style.display = "flex";
+                                       }else{
+                                           item[i].style.display = "none";
+                                       }
+                                    }
+                                }
+                            </script>
+
+
+
+                    <div class="h3 mb-3 fw-normal" style="position:absolute; left:420px;">
+
+                        <div class="mb-3">
+                        </div>
+                        <div class="my-box" style="border:1px solid; width: 500px; height: 500px; padding: 20px;">
+                            <div class="mb-3" style="font-size:15px;">
+                                운동명
+                                <input type="text" class="form-control" style="border-radius: 1px;" name="exercise_l_name" id="exercise_l_name" placeholder="걷기">
+                            </div>
+                            <div class="mb-3" style="font-size:15px;">
+                                칼로리(10분당)
+                                <input type="number" class="form-control" style="border-radius: 1px;" name="exercise_l_calorie" id="exercise_l_calorie" placeholder="42(kcal)">
+                            </div>
+                            <input class="btn btn-lg" type="submit" value="추가하기" style="margin:auto; display:block;">
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </main>
+
+        <footer>
+            <ul class="project">
+                <li><h2>Project</h2>
+                    <h4>창의캡스톤디자인</h4></li>
+            </ul>
+
+            <ul class="creators">
+                <li>
+                    <h2>Creators</h2>
+                    <h4>20192325김채영 20192384이혜안</h4>
+                </li>
+            </ul>
+            <hr>
+            <p>회사소개 &nbsp;| &nbsp;이용약관 &nbsp;|&nbsp; 개인정보처리방침 &nbsp;|&nbsp; 고객센터 </p>
+
+        </footer>
+
+    </body>
+
+</html>

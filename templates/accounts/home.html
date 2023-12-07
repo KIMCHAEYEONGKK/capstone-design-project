@@ -1,0 +1,1501 @@
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="javascript/jquery-1.12.3.js"></script>
+    <script src="javascript/script.js" defer type="text/javascript"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>home</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        img {
+            display: block;
+            border: 0;
+            width: 100%;
+        }
+
+        a {
+            display: block;
+            list-style: none;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        li:hover>a {
+            font-weight: 800;
+        }
+
+        a:hover {
+            font-weight: 800;
+        }
+
+        header,
+        section,
+        footer {
+            width: 100%;
+            position: relative;
+        }
+
+        .in_header,
+        .con_wrap {
+            max-width: 1500px;
+            width: 75%;
+            background-color: white;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+
+            .in_header,
+            .con_wrap {
+                width: 85%;
+            }
+
+            .section_1 {
+                height: 800px;
+            }
+
+            .section_1>img {
+                object-fit: cover;
+            }
+
+        }
+
+        /* 1440 end */
+
+
+        /* 1024 start */
+        @media screen and (max-width:1024px) {
+
+            .in_header,
+            .con_wrap {
+                width: 90%;
+            }
+
+        }
+
+        /* 1024 end */
+
+        .wrap {
+            width: 100%;
+            position: relative;
+        }
+
+        header {
+            height: 100px;
+            background-color: white;
+            text-align: center;
+            line-height: 80px;
+            z-index: 1;
+            position: fixed;
+            box-shadow: 1px 1px 3px #c5c5c5;
+
+        }
+
+        .top_menu:hover .sub_menu {
+            height: 250px;
+        }
+
+
+        .logo {
+            width: 150px;
+            height: 80px;
+            background-color: white;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 80px;
+
+        }
+
+        .gnb {
+            width: 800px;
+            height: 80px;
+            background-color: white;
+            font-size: 20px;
+            display: flex;
+            line-height: 80px;
+
+        }
+
+        .gnb>li {
+            width: 25%;
+            height: 100%;
+        }
+
+        .nav {
+            width: 300px;
+            height: 80px;
+            display: flex;
+            line-height: 80px;
+        }
+
+        .nav>li {
+            width: 50%;
+            height: 100%;
+        }
+
+        .nav>li:hover>a {
+            text-decoration: underline;
+        }
+
+        .mo_wrap {
+            display: none;
+        }
+
+        /* header end */
+
+        .section_1 {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+
+
+        }
+
+        .section_1 .container {
+            width: 100%;
+            height: 300px;
+            padding: 120px 30px;
+
+        }
+
+        .section_1 .container .date {
+            display: flex;
+            margin-bottom: 50px;
+
+        }
+
+        .section_1 .container .date li {
+            margin-right: 30px;
+            font-weight: 600;
+            font-weight: 700;
+        }
+
+        .section_1 .container .date li span {
+            margin-left: 5px;
+            font-weight: 400;
+        }
+
+        /* date */
+
+        .date_btn {
+            width: 80px;
+            height: 30px;
+
+        }
+
+        .date_btn a {
+            color: #ffffff;
+            background-color: #333333;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        .inbody_title {
+            font-size: 20px;
+            letter-spacing: -1px;
+            font-weight: bold;
+            display: flex;
+            margin-bottom: 20px;
+
+        }
+
+        .inbody_btn {
+            width: 80px;
+            height: 30px;
+            margin-left: 30px;
+
+        }
+
+        .inbody_btn a:hover {
+            font-weight: bold;
+        }
+
+        .inbody_btn a {
+            color: #ffffff;
+            background-color: #333333;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        .section_1 .inbody {
+            display: flex;
+
+
+        }
+
+        .section_1 .inbody li {
+            width: 16.6%;
+            text-align: center;
+            border: 1px solid #e2e2e2;
+
+        }
+
+        .section_1 .inbody li h3 {
+            font-size: 16px;
+            background-color: #333333;
+            color: #ffffff;
+            line-height: 40px;
+            font-weight: 600;
+
+        }
+
+        .section_1 .inbody li h4 {
+            font-weight: 600;
+            line-height: 50px;
+
+        }
+
+
+        /* section_1 */
+
+
+        .section_2 {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 100px;
+
+
+        }
+
+        .section_2 .container {
+            width: 100%;
+            height: 300px;
+            padding: 150px 30px;
+
+        }
+
+
+
+        .health_title {
+            font-size: 20px;
+            letter-spacing: -1px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+        }
+
+        .health_btn {
+            width: 70px;
+            height: 30px;
+
+        }
+
+        .health_btn a:hover {
+            font-weight: bold;
+            background-color: #000000;
+        }
+
+        .health_btn a {
+            color: #ffffff;
+            background-color: #333333;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        .section_2 .health {
+            display: flex;
+
+
+        }
+
+        .section_2 .health li {
+            width: 33.3333%;
+            text-align: center;
+            border: 1px solid #e2e2e2;
+
+        }
+
+        .section_2 .health li h3 {
+            font-size: 16px;
+            background-color: #333333;
+            color: #ffffff;
+            line-height: 40px;
+            font-weight: 600;
+
+        }
+
+        .section_2 .health li h4 {
+
+            font-weight: 600;
+            line-height: 50px;
+            border-bottom: solid 1px #e2e2e2;
+
+        }
+
+        .section_2 .health li h5 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 50px;
+            background-color: #e2e2e2;
+
+        }
+
+        .section_2 .health li span {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 50px;
+
+
+        }
+
+        .kcal h5 {
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .kcal span {
+            font-weight: 700;
+            color: #f33d3d;
+        }
+
+
+
+        /* section_2 */
+
+        .section_3 {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 100px;
+
+
+        }
+
+        .section_3 .container {
+            width: 100%;
+            height: 300px;
+            padding: 120px 30px;
+
+        }
+
+
+
+        .food_title {
+            font-size: 20px;
+            letter-spacing: -1px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+        }
+
+        .food_btn {
+            width: 70px;
+            height: 30px;
+
+        }
+
+        .food_btn a:hover {
+            font-weight: bold;
+            background-color: #000000;
+        }
+
+        .food_btn a {
+            color: #ffffff;
+            background-color: #333333;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+
+        .section_3 .food {
+            display: flex;
+
+
+        }
+
+        .section_3 .food li {
+            width: 33.3333%;
+            text-align: center;
+            border: 1px solid #e2e2e2;
+
+        }
+
+        .section_3 .food li h3 {
+            font-size: 16px;
+            background-color: #333333;
+            color: #ffffff;
+            line-height: 40px;
+            font-weight: 600;
+
+        }
+
+        .section_3 .food li h4 {
+
+            font-weight: 600;
+            line-height: 50px;
+            border-bottom: solid 1px #e2e2e2;
+
+        }
+
+        .section_3 .food li h5 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 50px;
+            background-color: #e2e2e2;
+
+        }
+
+        .section_3 .food li span {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 50px;
+
+
+        }
+
+        .kcal h5 {
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .kcal span {
+            font-weight: 700;
+            color: #f33d3d;
+        }
+
+
+
+
+
+
+
+        /* section_3 end */
+
+
+
+        footer {
+            padding: 80px 20px;
+            width: 100%;
+            height: 250px;
+            background-color: #000000;
+            color: white;
+            box-sizing: border-box;
+            position: absolute;
+
+        }
+
+        footer a {
+            color: white;
+
+        }
+
+        footer>.project {
+            width: 700px;
+            height: 30px;
+
+
+        }
+
+        footer>.project h2 {
+            float: left;
+            font-size: 16px;
+            margin-right: 60px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        footer>.project h4 {
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>.creators {
+            width: 400px;
+            height: 30px;
+            margin-bottom: 20px;
+
+
+        }
+
+        footer>.creators h2 {
+            float: left;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 50px;
+            line-height: 30px;
+        }
+
+        footer>.creators h4 {
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>hr {
+            border-width: 1px;
+        }
+
+        footer>p {
+            width: 1500px;
+            height: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+
+        /*footer end*/
+
+        .top_btn {
+            width: 40px;
+            height: 40px;
+            font-size: 13px;
+            box-shadow: 1px 1px 5px #797979;
+            border-radius: 50px;
+            background-color: white;
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            text-align: center;
+            line-height: 40px;
+
+        }
+
+
+
+        /*top_btn end*/
+
+
+
+
+
+        /* 1540 start */
+        @media screen and (max-width:1540px) {
+
+            header {
+                height: 200px;
+            }
+
+            .in_header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin: 15px 0;
+            }
+
+            .gnb {
+                width: 100%;
+            }
+
+            .nav {
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            .section_1 {
+                padding: 120px 0;
+            }
+
+
+
+
+            /* header end */
+            .section_2 {
+                width: 100%;
+                height: 500px;
+                padding: 100px 0;
+
+            }
+
+            .tabmenu>li.active ul {
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                padding: 40px 30px;
+                display: flex;
+                justify-content: space-between;
+                background-color: #333333;
+            }
+
+            .con_1,
+            .con_2,
+            .con_3 {
+                width: 100%;
+                height: 100%;
+            }
+
+            .con_1 li,
+            .con_2 li,
+            .con_3 li {
+                width: 450px;
+                height: 350px;
+                display: inline-block;
+                border-radius: 10px;
+            }
+
+            .con_1 li img,
+            .con_2 li img,
+            .con_3 li img {
+                border-radius: 10px;
+            }
+
+            /* section 2 */
+            footer {
+                height: 300px;
+                padding: 100px 20px;
+            }
+
+
+
+
+
+
+
+        }
+
+        /* 1540 end */
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+
+            header {
+                height: 200px;
+            }
+
+            .in_header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin: 15px 0;
+            }
+
+            .gnb {
+                width: 100%;
+            }
+
+            .nav {
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            .con_1,
+            .con_2,
+            .con_3 {
+                width: 100%;
+                height: 100%;
+            }
+
+            .con_1 li,
+            .con_2 li,
+            .con_3 li {
+                width: 420px;
+                height: 320px;
+                display: inline-block;
+                border-radius: 10px;
+            }
+
+            .con_1 li img,
+            .con_2 li img,
+            .con_3 li img {
+                border-radius: 10px;
+            }
+
+            /* section_2 */
+
+            footer {
+                padding: 100px 20px;
+            }
+
+
+            footer>p {
+                width: 100%;
+                float: left;
+            }
+
+            /*footer end*/
+
+        }
+
+        /* 1440 end */
+
+
+
+
+
+        /* 760 start */
+        @media screen and (max-width:760px) {
+            header {
+                height: 90px;
+            }
+
+
+            .logo {
+                height: 60px;
+                line-height: 60px;
+            }
+
+
+
+            .gnb,
+            .sub_menu {
+                display: none;
+            }
+
+            .mo_wrap {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            #mo_btn:checked~.mo_gnb {
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label {
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input {
+                display: none;
+            }
+
+            .mo_gnb {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+
+            .mo_gnb a {
+                color: white;
+            }
+
+
+            /* header end */
+
+            .section_1 {
+                padding: 20px 0;
+            }
+
+
+            .section_1 .inbody li h3 {
+                font-size: 16px;
+            }
+
+            .section_1 .inbody li h4 {
+                font-size: 16px;
+            }
+
+
+            .tabmenu>li.active ul {
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                padding: 30px 20px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                background-color: #333333;
+            }
+
+            .con_1,
+            .con_2,
+            .con_3 {
+                width: 100%;
+                height: 100%;
+            }
+
+            .con_1 li,
+            .con_2 li,
+            .con_3 li {
+                width: 680px;
+                height: 300px;
+                display: inline-block;
+                border-radius: 10px;
+
+
+            }
+
+            .con_1 li img,
+            .con_2 li img,
+            .con_3 li img {
+                border-radius: 10px;
+            }
+
+            /* section_1 */
+
+            .section_2 {
+                padding: 10px 0;
+                height: 400px;
+            }
+
+
+
+            .section_3 {
+                padding: 10px 0;
+                height: 500px;
+            }
+
+
+
+
+            /* section_2 */
+
+
+
+
+            footer {
+                padding: 80px 20px;
+                height: 250px;
+
+            }
+
+            footer>p {
+                width: 100%;
+                float: left;
+
+            }
+
+            footer hr {
+                width: 100%;
+            }
+
+
+
+
+            /* footer end */
+
+
+        }
+
+        /* 760 end */
+
+        /* 500 start*/
+
+        @media screen and (max-width:500px) {
+
+            header {
+                height: 90px;
+            }
+
+
+            .gnb,
+            .sub_menu {
+                display: none;
+            }
+
+            .mo_wrap {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+            }
+
+
+            #mo_btn:checked~.mo_gnb {
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label {
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input {
+                display: none;
+            }
+
+            .mo_gnb {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+
+            .mo_gnb a {
+                color: white;
+            }
+
+            /* header end */
+
+            .section_1 {
+                padding: 5px 0;
+
+            }
+
+            .section_1 .container .date li span {
+                margin-left: 0;
+            }
+
+            .section_1 .sec_1_btn {
+                margin-right: 0;
+            }
+
+            .section_1 .sec_1_btn a {
+                font-size: 14px;
+            }
+
+            .section_1 .inbody li h3 {
+                font-size: 14px;
+            }
+
+            .section_1 .inbody li h4 {
+                font-size: 14px;
+            }
+
+
+            /* section_1 */
+
+
+            .section_2 .health li span {
+                font-size: 14px;
+                font-weight: 800;
+                line-height: 50px;
+
+
+            }
+
+            /* section_3 */
+
+
+            .section_3 .food li span {
+                font-size: 14px;
+                font-weight: 800;
+                line-height: 50px;
+
+            }
+
+            /* section_3 */
+
+
+
+            footer p {
+                float: left;
+
+            }
+            .popup {
+                display: none; /*숨기기*/
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+            }
+
+            .popmenu {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 300px;
+                height: 200px;
+                text-align: center;
+                background: #fff;
+            }
+
+            .popmenu p {
+                margin-top: 80px;
+            }
+
+            .exit {
+                position: absolute;
+                left: 50%;
+                bottom: 10px;
+                transform: translate(-50%,0);
+                width: 60px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                background: #007AAE;
+                cursor: pointer;
+            }
+
+            /*본문내용*/
+            .contents {
+                width: 300px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+                color: #fff;
+                background: #555;
+                cursor: pointer;
+            }
+
+
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+                $("#contents").click(function(){
+                    $("#popup").fadeIn();
+                });
+                $("#popup").click(function(){
+                    $("#popup").fadeOut();
+                });
+});
+    </script>
+
+
+
+</head>
+
+<body style="overflow-x:hidden; overflow-y:auto;">
+    <div class="wrap">
+        <header>
+            <div class="in_header">
+                <div class="logo"><a href="{% url 'accounts:home' %}">LOGO</a></div>
+
+                <ul class="gnb">
+                    {% if request.user.is_authenticated %}
+
+                        <li class="top_menu">
+                            <a href="{% url 'exercise:exercise' %}" >Health</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'food:food' %}">Food</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'setting:inbody' %}">Inbody</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="{% url 'service:board_list' %}">Service</a>
+                        </li>
+                        <div class="nav">
+                            <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+                            <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+                        </div>
+
+                    {% else %}
+
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
+
+                        </li>
+                        <div class="nav">
+                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                        </div>
+
+
+                    {% endif %}
+                </ul>
+
+
+
+
+                <div class="mo_wrap">
+                    <input type="checkbox" id="mo_btn">
+                    <label for="mo_btn">=</label>
+                    <ul class="mo_gnb">
+                        {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'exercise:exercise' %}">Health</a></li>
+                        <li><a href="{% url 'food:food' %}">Food</a></li>
+                        {% if setting.exists %}
+                            <li><a href="{% url 'setting:inbody_detail' %}">Inbody</a></li>
+                        {% else %}
+                            <li><a href="{% url 'setting:inbody' %}">Inbody</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'service:board_list' %}">Service</a></li>
+                        <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+                        <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+
+                        {% else %}
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a></li>
+                        <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a></li>
+                        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- header end -->
+
+        <section class="section_1">
+            <div class="container">
+                <div style="font-size:20px; margin-bottom:20px;">
+                    <script>
+                        date = new Date().toLocaleDateString();
+                        document.write(date)
+                    </script>
+                    {{ b }}
+                </div>
+
+
+                <ul class="date">
+                    <li class="start_date">시작 날짜:
+                        <span style="font-size:18px;">{{ sets.datepicker1 }}</span>
+                    </li>
+                    <li class="end_date">종료 날짜:
+                        <span style="font-size:18px;">{{ sets.datepicker2 }}</span>
+                    </li>
+
+
+                    {% if diff_date.days > diff_date1.days %}
+                        <p style="margin-left:10px; font-weight:bolder; font-size:23px;">D-{{ diff_date1.days }}</p>
+                    {% elif diff_date.days <= diff_date1.days %}
+                        <p style="margin-left:10px; font-weight:bolder; font-size:23px;">D-{{ diff_date.days }}</p>
+                    {% endif %}
+
+
+
+                    <li style="margin-left:30px;" class="date_btn">
+                        <a href="{% url 'setting:inbody_update' %}">수정하기</a>
+                    </li>
+                </ul>
+                <br>
+
+
+                <div class="inbody_title">
+                    <h4>Inbody</h4>
+                    <div class="inbody_btn">
+                        <a href="{% url 'setting:inbody_update' %}">수정하기</a>
+                    </div>
+                    <div style="margin-left:900px;">
+<!--                        {% if now_weight in sets %}-->
+<!--                        {% endif %}-->
+                        {% if sets.weight > sets.now_weight %}
+                            <span>이전보다 -</span><span style="color:blue;">{{ sets.weight|sub:sets.now_weight }}</span><span>kg</span>
+                        {% elif sets.weight == sets.now_weight %}
+                            <span>이전보다 -0kg</span>
+                        {% elif sets.weight < sets.now_weight %}
+                            <span>이전보다 +</span><span style="color:red;">{{ sets.now_weight|sub:sets.weight }}</span><span>kg</span>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+
+                <ul class="inbody">
+
+                    <li>
+                        <h3>성별</h3>
+                        <h4>{{ sets.gender }}</h4>
+                    </li>
+                    <li>
+                        <h3>키</h3>
+                        <span style="font-weight: 600; line-height: 50px;">{{ sets.tall }}</span><span>cm</span>
+                    </li>
+                    <li>
+                        <h3>체중</h3>
+                        <span style="font-weight: 600; line-height: 50px;">{{ sets.weight }}</span><span>kg</span>
+                    </li>
+                    <li>
+                        <h3>현재체중</h3>
+                        <span style="font-weight: 600; line-height: 50px;">{{ sets.now_weight }}</span><span>kg</span>
+                    </li>
+                    <li>
+                        <h3>목표체중</h3>
+                        <span style="font-weight: 600; line-height: 50px;">{{ sets.target_weight }}</span><span>kg</span>
+                    </li>
+                    <li>
+                        <h3>골격근량</h3>
+                        <h4>{{ sets.muscle }}</h4>
+                    </li>
+                    <li>
+                        <h3>체지방량</h3>
+                        <h4>{{ sets.fat }}</h4>
+                    </li>
+
+
+                </ul>
+
+
+
+
+
+
+
+<!--                <div class="modalBackground">-->
+<!--                    <div class="modalType">-->
+<!--                        <div class="textModal">-->
+<!--                            <i class="fa-solid fa-face-frown"></i>-->
+<!--                            <br>-->
+<!--                            <p><strong>나의 BMI</strong></p>-->
+<!--                            {{ bmi|floatformat:2 }}<br>-->
+
+
+
+
+<!--
+                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+
+            </div>
+
+
+
+        </section>
+
+
+
+        <!-- section_1 -->
+
+        <section class="section_2" style="margin-top:70px;">
+            <div class="container">
+                <div class="health_title">
+                    <h4>오늘의 추천 운동</h4>
+<!--                    <div class="health_btn">-->
+<!--                        <a href="{% url 'exercise:exercise_list' %}">추가하기</a>-->
+<!--                    </div>-->
+                </div>
+
+                <ul class="health">
+                    <li>
+                        <h3>유산소</h3>
+                        <h4 style="font-size:18px;">{{ e_1.exercise_c_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_2.exercise_c_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_3.exercise_c_name }}</h4>
+                    </li>
+
+                    <li>
+                        <h3>상체</h3>
+                        <h4 style="font-size:18px;">{{ e_4.exercise_u_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_5.exercise_u_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_6.exercise_u_name }}</h4>
+                    </li>
+
+
+                    <li>
+                        <h3>하체</h3>
+                        <h4 style="font-size:18px;">{{ e_7.exercise_l_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_8.exercise_l_name }}</h4>
+                        <h4 style="font-size:18px;">{{ e_9.exercise_l_name }}</h4>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <img src="data:image/png;base64,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" style="width:50px; height:50px; margin-left:30px;">
+        <a href="#none" onclick="openPopup()" style="padding-left:30px; font-size:20px;">나의 BMI ></a>
+
+
+
+        </div>
+    <script>
+        function openPopup(){
+            window.open("popup/", "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500, left=0, top=0" );
+        }
+    </script>
+
+
+
+
+
+
+
+        <!-- section_2 -->
+
+        <section class="section_3">
+            <div class="container">
+                <div class="food_title">
+                    <h4>오늘의 추천 식단</h4>
+<!--                    <div class="food_btn">-->
+<!--                        <a href="food_setting.html">수정하기</a>-->
+<!--                    </div>-->
+                </div>
+
+                <ul class="food">
+                    <li>
+                        <h3>아침</h3>
+                        <h4 style="font-size:18px;">{{ food_1.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_2.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_3.food_name }}</h4>
+
+
+                    </li>
+                    <li>
+                        <h3>점심</h3>
+                        <h4 style="font-size:18px;">{{ food_4.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_5.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_6.food_name }}</h4>
+
+
+                    </li>
+                    <li>
+                        <h3>저녁</h3>
+                        <h4 style="font-size:18px;">{{ food_7.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_8.food_name }}</h4>
+                        <h4 style="font-size:18px;">{{ food_9.food_name }}</h4>
+
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </section>
+
+
+
+
+        <!-- section_3 end -->
+
+
+
+
+
+
+        <footer>
+            <ul class="project">
+                <li>
+                    <h2>Project</h2>
+                    <h4>창의캡스톤디자인</h4>
+                </li>
+            </ul>
+
+            <ul class="creators">
+                <li>
+                    <h2>Creators</h2>
+                    <h4>20192325김채영 &nbsp; 20192384이혜안</h4>
+                </li>
+            </ul>
+            <hr>
+
+            <p>회사소개 &nbsp;| &nbsp;이용약관 &nbsp;|&nbsp; 개인정보처리방침 &nbsp;|&nbsp; 고객센터 </p>
+
+        </footer>
+
+        <!-- footer end -->
+
+        <div class="top_btn">
+            <a href="#">TOP</a>
+        </div>
+
+        <!-- top_btn end -->
+    </div>
+    <script type="text/JavaScript">
+                    var target = document.querySelectorAll('.btn_open');
+                    var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
+                    var targetID;
+
+                    // 팝업 열기
+                    for(var i = 0; i < target.length; i++){
+                      target[i].addEventListener('click', function(){
+                        targetID = this.getAttribute('href');
+                        document.querySelector(targetID).style.display = 'block';
+                      });
+                    }
+
+                    // 팝업 닫기
+                    for(var j = 0; j < target.length; j++){
+                      btnPopClose[j].addEventListener('click', function(){
+                        this.parentNode.parentNode.style.display = 'none';
+                      });
+                    }
+                </script>
+
+
+</body>
+
+
+</html>

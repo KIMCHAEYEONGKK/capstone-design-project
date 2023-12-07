@@ -1,0 +1,995 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="icon" href="#" type="image/x-icon">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>calendar</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- fullcalendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        img{
+            display: block;
+            border: 0;
+            width: 100%;
+        }
+
+        a{
+            list-style: none;
+            text-decoration: none;
+            color: black;
+        }
+
+        ul{
+            list-style: none;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        li:hover>a{
+            font-weight: 700;
+        }
+
+        a:hover{
+            font-weight: 800;
+        }
+
+        header, section, footer{
+            width: 100%;
+            position: relative;
+        }
+
+        .in_header, .con_wrap{
+            max-width: 1500px;
+            width: 75%;
+            background-color: white;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+            .in_header, .con_wrap{
+                width: 85%;
+            }
+
+            .section_1{
+                height: 800px;
+            }
+
+            .section_1>img{
+                object-fit: cover;
+            }
+
+        }
+        /* 1440 end */
+
+
+        /* 1024 start */
+        @media screen and (max-width:1024px) {
+            .in_header, .con_wrap{
+                width: 90%;
+            }
+
+        }
+        /* 1024 end */
+
+        .wrap{
+            width: 100%;
+        }
+
+        header{
+            height: 100px;
+            background-color: white;
+            text-align: center;
+            line-height: 80px;
+            z-index: 1;
+            position: fixed;
+            box-shadow: 1px 1px 3px #c5c5c5;
+
+        }
+
+        .top_menu:hover .sub_menu{
+            height: 250px;
+        }
+
+
+        .logo{
+            width: 150px;
+            height: 80px;
+            background-color: white;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 80px;
+
+        }
+
+        .gnb{
+            width: 800px;
+            height: 80px;
+            background-color: white;
+            font-size: 22px;
+            display: flex;
+            line-height: 90px;
+
+        }
+
+        .gnb>li{
+            width: 25%;
+            height: 100%;
+        }
+
+        .nav{
+            width: 200px;
+            height: 80px;
+            display: flex;
+            line-height: 80px;
+        }
+
+        .nav>li{
+            width: 50%;
+            height: 100%;
+        }
+
+        .nav>li:hover>a{
+            text-decoration: underline;
+        }
+
+        .mo_wrap{
+            display: none;
+        }
+
+        /* header end */
+
+        .section_1{
+            width: 100%;
+            height: 1300px;
+        }
+
+        .section_1>{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* section_1 end */
+
+        .section_2{
+            padding: 120px 0;
+            background-color: white;
+        }
+
+
+        .sec_2_title>h1{
+            width: 1300px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .sec_2_title>h3{
+
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: -2px;
+            margin-bottom: 50px;
+        }
+
+
+
+        .con_2{
+            border-radius: 10px;
+            width: 31%;
+            height: 500px;
+            background-color: white;
+            box-shadow: 2px 2px 10px #dedede;f5;
+            padding: 30px 30px;
+            position: relative;
+        }
+
+        .con_2_text>h2{
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .con_2_text>h3{
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: -2px;
+        }
+
+        .con_2_img{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            right: 100px;
+            bottom: 100px;
+
+        }
+
+
+
+
+        /* section_2 end */
+
+
+        .section_3{
+            height: 300px;
+            background-color: rgb(34, 43, 122);
+        }
+
+        /* section_3 end */
+
+
+        .section_4{
+            padding: 120px 0;
+            background-color: white;
+        }
+
+        .con_4{
+            width: 48%;
+            height: 700px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 2px 2px 10px #dedede;
+            padding: 50px 50px;
+        }
+
+        .con_4>h1{
+            width: 1300px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .con_4>h3{
+
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: -2px;
+            margin-bottom: 50px;
+        }
+
+        /* section_4 end */
+
+        footer{
+            width: 100%;
+            height: 200px;
+            background-color: black;
+            color: white;
+            padding: 30px 50px;
+            box-sizing: border-box;
+
+        }
+
+        footer{
+            color: white;
+
+        }
+
+
+
+        footer a{
+            color: white;
+
+        }
+
+        footer>.project{
+            width: 700px;
+            height: 30px;
+
+
+        }
+
+        footer>.project h2{
+            float: left;
+            font-size: 16px;
+            margin-right: 60px;
+            font-weight: 600;
+            line-height: 30px;
+        }
+
+        footer>.project h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>.creators{
+            width: 400px;
+            height: 30px;
+            margin-bottom: 20px;
+
+
+        }
+
+        footer>.creators h2{
+            float: left;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 50px;
+            line-height: 30px;
+        }
+
+        footer>.creators h4{
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        footer>hr{
+            border-width: 1px;
+        }
+
+        footer>p{
+            width: 1500px;
+            height: 30px;
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+
+        /*footer end*/
+
+        .top_btn{
+            width: 40px;
+            height: 40px;
+            font-size: 13px;
+            box-shadow: 1px 1px 5px  #797979;
+            border-radius: 50px;
+            background-color: white;
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            text-align: center;
+            line-height: 40px;
+
+        }
+
+
+
+        /*top_btn end*/
+
+
+
+
+
+        /* 1540 start */
+        @media screen and (max-width:1540px) {
+
+            header{
+                height: 210px;
+            }
+
+            .in_header{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo{
+                margin: 15px 0;
+            }
+
+            .gnb{
+                width: 100%;
+            }
+
+            .nav{
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            /* header end */
+
+            .section_1{
+                height: 700px;
+            }
+
+            .section_1>img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* section_1 end */
+
+            .sec_2_title{
+                margin-left: 120px;
+            }
+
+            .con_2{
+                margin: 0 auto;
+                width: 80%;
+                height: 400px;
+                margin-bottom: 12px;
+                padding: 80px 150px;
+             }
+            /* section_2 end */
+
+            .con_4{
+                height: 600px;
+            }
+
+            /* section_4 end */
+
+        }
+        /* 1540 end */
+
+
+        /* 1440 start */
+        @media screen and (max-width:1440px) {
+
+            header{
+                height: 210px;
+            }
+
+            .in_header{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo{
+                margin: 15px 0;
+            }
+
+            .gnb{
+                width: 100%;
+            }
+
+            .nav{
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
+
+            /* header end */
+
+
+
+            /* section_1 end */
+
+            .sec_2_title{
+                margin-left: 120px;
+            }
+
+            .con_2{
+                width: 80%;
+                height: 400px;
+                margin-bottom: 12px;
+                padding: 80px 150px;
+             }
+
+
+            /* section_2 end */
+
+            .con_4{
+                height: 600px;
+            }
+
+            /* section_4 end */
+
+            footer>p{
+                width: 100%;
+                float: left;
+              }
+
+            /*footer end*/
+
+        }
+        /* 1440 end */
+
+
+
+
+
+        /* 760 start */
+        @media screen and (max-width:760px) {
+            header{
+                height: 90px;
+            }
+
+
+            .logo{
+                height: 60px;
+                line-height: 60px;
+            }
+
+
+
+            .gnb, .sub_menu{
+                display: none;
+            }
+
+            .mo_wrap{
+                display: block;
+            }
+
+            .nav{
+                display: none;
+            }
+
+            #mo_btn:checked~.mo_gnb{
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label{
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input{
+                display: none;
+            }
+
+            .mo_gnb{
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+            .mo_gnb a{
+                color: white;
+            }
+
+
+
+
+
+            /* header end */
+
+
+
+
+            /* section_1 end */
+
+            .sec_2_title{
+                margin-left: 10px;
+            }
+
+
+            .con_2{
+                width: 100%;
+                height: 500px;
+                margin-bottom: 12px;
+                padding: 40px 20px;
+             }
+
+             .con_2_text{
+                margin-left: 20px;
+             }
+
+
+            /* section_2 end */
+
+            .section_3{
+                height: 200px;
+            }
+
+             /* section_3 end */
+
+             .con_4{
+                width: 100%;
+                height: 600px;
+                margin-bottom: 20px;
+             }
+
+              /* section_4 end */
+
+              footer{
+                height: 250px;
+
+              }
+
+              footer>p{
+                width: 100%;
+                float: left;
+
+              }
+
+              footer hr{
+                width: 100%;
+              }
+
+
+
+
+              /* footer end */
+
+
+        }
+        /* 760 end */
+
+        /* 500 start*/
+
+        @media screen and (max-width:500px) {
+
+            header{
+                height: 90px;
+            }
+
+
+            .gnb, .sub_menu{
+                display: none;
+            }
+
+            .mo_wrap{
+                display: block;
+            }
+
+            .nav{
+                display: none;
+            }
+
+
+            #mo_btn:checked~.mo_gnb{
+                height: 360px;
+                transition-duration: 0.4s;
+            }
+
+            label{
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 2.5%;
+                cursor: pointer;
+                line-height: 50px;
+
+            }
+
+            input{
+                display: none;
+            }
+
+            .mo_gnb{
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                line-height: 60px;
+                background-color: #1b1b1b;
+
+
+            }
+            .mo_gnb a{
+                color: white;
+            }
+
+            /* header end */
+
+            .section_1{
+                height: 600px;
+            }
+
+            /*section_1 end*/
+
+            .section_2>.con_wrap>li{
+                width: 100%;
+            }
+
+
+            /*section_2 end*/
+
+
+            footer p{
+                float: left;
+
+            }
+
+
+
+        }
+
+        /* 500 end */
+
+
+
+
+    </style>
+
+</head>
+<body>
+    <div class="wrap" style='width:1540px;'>
+        <header>
+            <div class="in_header">
+                <div class="logo"><a href="{% url 'accounts:main1' %}">LOGO</a></div>
+
+
+                <ul class="gnb">
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a>
+
+                        </li>
+                        <li class="top_menu">
+                            <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
+
+                        </li>
+                        <div class="nav">
+                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                        </div>
+
+
+
+                </ul>
+
+
+
+
+                <div class="mo_wrap">
+                    <input type="checkbox" id="mo_btn">
+                    <label for="mo_btn">=</label>
+                    <ul class="mo_gnb">
+
+                            <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a></li>
+                            <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a></li>
+                            <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a></li>
+                            <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a></li>
+                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+<!--                plugins: [ 'dayGrid', 'interaction' ],-->
+<!--                dateClick: function (info) {-->
+<!--                    alter('Clicked on: + info.datestr);-->
+<!--                -->
+                timeZone: 'UTC',
+                initialView: 'dayGridMonth', // 홈페이지에서 다른 형태의 view를 확인할  수 있다.
+                events:[ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+                    {
+                        title:'일정',
+                        start:'2021-05-26',
+                        end:'2021-05-27'
+                        // color 값을 추가해 색상도 변경 가능 자세한 내용은 하단의 사이트 참조
+                    }
+                ], headerToolbar: {
+                    center: 'addEventButton' // headerToolbar에 버튼을 추가
+                }, customButtons: {
+                    addEventButton: { // 추가한 버튼 설정
+                        text : "일정 추가",  // 버튼 내용
+                        click : function(){ // 버튼 클릭 시 이벤트 추가
+                            $("#calendarModal").modal("show"); // modal 나타내기
+
+                            $("#addCalendar").on("click",function(){  // modal의 추가 버튼 클릭 시
+                                var content = $("#calendar_content").val();
+                                var start_date = $("#calendar_start_date").val();
+                                var end_date = $("#calendar_end_date").val();
+
+                                //내용 입력 여부 확인
+                                if(content == null || content == ""){
+                                    alert("내용을 입력하세요.");
+                                }else if(start_date == "" || end_date ==""){
+                                    alert("날짜를 입력하세요.");
+                                }else if(new Date(end_date)- new Date(start_date) < 0){ // date 타입으로 변경 후 확인
+                                    alert("종료일이 시작일보다 먼저입니다.");
+                                }else{ // 정상적인 입력 시
+                                    var obj = {
+                                        "title" : content,
+                                        "start" : start_date,
+                                        "end" : end_date
+                                    }//전송할 객체 생성
+
+                                    console.log(obj); //서버로 해당 객체를 전달해서 DB 연동 가능
+                                }
+                            });
+                        }
+                    }
+                },
+                editable: true, // false로 변경 시 draggable 작동 x
+                displayEventTime: false // 시간 표시 x
+            });
+            calendar.render();
+        });
+        </script>
+        <section class="section_1">
+            <div id="calendar" style="width:1000px; padding-left:300px; padding-top:220px;"></div>
+        </section>
+        <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="taskId" class="col-form-label">일정 내용</label>
+                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
+                        <label for="taskId" class="col-form-label">시작 날짜</label>
+                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
+                        <label for="taskId" class="col-form-label">종료 날짜</label>
+                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="sprintSettingModalClose">취소</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+        <section class="section_2">
+            <div class="con_wrap">
+                <div class="sec_2_title">
+                    <h1>Planner</h1>
+                    <h3>다이어트 목표 기간에 맞춰 맞춤형 플랜을 짜줘요.</h3>
+                </div>
+
+                <div class="con_2">
+                    <li>
+                        <div class="con_2_text">
+                            <h2>Health</h2>
+                            <h3>요일별 맞춤형 운동 제공</h3>
+
+                        </div>
+                        <div class="con_2_img">
+
+
+                        </div>
+
+                    </li>
+                </div>
+
+                <div class="con_2">
+                    <li>
+                        <div class="con_2_text">
+                            <h2>Food</h2>
+                            <h3>요일별 맞춤형 식단 제공</h3>
+
+                        </div>
+                        <div class="con_2_img">
+
+                        </div>
+                    </li>
+                </div>
+                <div class="con_2">
+                    <li>
+                        <div class="con_2_text">
+                            <h2>Inbody</h2>
+                            <h3>인바디</h3>
+
+                        </div>
+                        <div class="con_2_img">
+
+                        </div>
+                    </li>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+        </section>
+
+        <!-- section_2 end -->
+
+        <section class="section_3"></section>
+
+        <!-- section_3 end -->
+
+        <section class="section_4">
+            <div class="con_wrap">
+                <div class="con_4">
+                    <h1>매일 달라지는 플랜</h1>
+                    <h3>어떤 운동을 해야할지 고민할 필요 없이<br>
+                        매일 다른 운동을 추천해줘요.</h3>
+
+                </div>
+                <div class="con_4">
+                    <h1>식단 칼로리 정보 제공</h1>
+                    <h3>매일 다른 식단 추천<br>
+                        오늘 하루 먹은 칼로리 계산</h3>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- section_4 end -->
+
+        <footer>
+            <ul class="project">
+                <li><h2>Project</h2>
+                    <h4>창의캡스톤디자인</h4></li>
+            </ul>
+
+            <ul class="creators">
+                <li>
+                    <h2>Creators</h2>
+                    <h4>20192325김채영 &nbsp; 20192384이혜안</h4>
+                </li>
+            </ul>
+            <hr>
+
+            <p>회사소개 &nbsp;| &nbsp;이용약관 &nbsp;|&nbsp; 개인정보처리방침 &nbsp;|&nbsp; 고객센터 </p>
+
+        </footer>
+
+        <!-- footer end -->
+
+        <div class="top_btn">
+            <a href="#">TOP</a>
+        </div>
+
+        <!-- top_btn end -->
+    </div>
+
+
+</body>
+</html>

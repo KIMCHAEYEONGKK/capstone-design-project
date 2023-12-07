@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <script type="text/javascript">
+    function win_close() {
+      window.close();
+    };
+  </script>
+</head>
+<body>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA9lBMVEX////52iMmHA/tHCT/4CQjGQ//4yQAAAAAAA0AHA0sIg/mHCMJAA7/4
+    SQZDg783SMJAADAqB2CcBcmHA4fEwAcEg4SAAAQAA4bDQAgFg8bEA4PAAD11iMVCg7v0SLzHCV3Zhbs6+rEwsBgURQ6LhHIrh4XBgChnpqnkRvfwyAdHA7TuB/MyshANBGjjRrZ
+    19W3tbFXUUmWk4+MiIQ9NSxmYVuxmhtHOhKMeRgWHA6yHB2XghkzKh9qWxXmySFuHBbHHB9MRT1ybWerqKU1KRFkVRSNHBlVRxOeHBvVHCE4HBFnHBWAHBh9eXYvJRleWVJtaGNP
+    HBI3z1suAAAN9ElEQVR4nO1da1vaShAuaW5gIAFCQpBAAoSLgCgqFxE8HrXWth7r//8zJ8luAnip2U1IgOb94PPQguF1ZmdmZ3ZnvnyJESNGjBgxYsSIESNGjBgxYgQJfdCrmTix
+    fvQGetRfJ0AMTlpPp3mGYYRVmK/zp0+tk0HUX88X9F7r6UZiBKkoEgSRJ1ZhvRKLksAI50+t3i5KVK+dmYIzua0TewcmT0Y8PavtFMvB7akoNMXPuK3SbAriaWtHVHbQOmekz0X3D
+    kuJuRpuPUm9dWPSe5cApSiFUiajZjKlgqJQH5G8aW2zuvb+FQ/f0KMUVeZYVk6N63Mtl5vkctq8Pk7JLMvJ6lum5m/43YuayAe4vRKKr8gVZLmUqk9G2W6ZN0E6sF4kOtnRpJ4y31J
+    4RbMo/HcbNZm30IdFYU18VIlT+/O2sUjTFqPEW1iMaXrRbc/7KldaY5k/lIbbpaz6WVFao6eyKW3UKdPvc3vFky53Rtodq66RlMSzLeI4FKX8Or1Zt2xK7hNyazTL3ZlJUlmRo1T
+    cFo4tYUV+VEbuzzo0AjuXJUl3Zn05Q61wFFpRkzNROxdW+MmKZvAY9BySvJEj5BVBCue1iPnpFyv2RWEb7UUalx4kma60++ySoyhcRKqqrcOlfyhw4yy++NYEm
+    R1zhaXvOIxOVQc3SwVVuHqX9k8PkqS7dXnJUbiJKJZrLeMXhX0wAhDfCkfSqC91VYxEjPqzK0CKaxif+j1kjrzR51y7KjyHvhprTXcFqspxoPJzOZLHlOquxmbIR
+    nXILBdgrpLeAD8LZCXHuarKnIXIz/QRznPlRrALcB3mcmzIjv8P0W8MrprOCmQn5c3xszmWJ6yzGptXIdnUHuPYUDVl0BvlZ4Hu3jmrUWRC2TmeuBrKaRVy4wR
+    NMVY0zrWpIWwchw5BimsH7iI+oMi3XU0VhpsmeMbAfVJJ6YYhQACyS5Wgvdm0SX1yCMr1SjgCBOArddmh+LRRgo6KcloiTIImxYS7GIUNUnQJsrPwNNQBOWM3TvGMcWzMaP
+    NO4i3okROnbmotDuEapOTRpsK0P4McyRRcixuxqCcCJMhmw1dRSDELvUZeOAmeYE9wAjUjGglaSBuOYxQCj24GzhqUs9ERNClmZWctBhyj6lcwFuVGUakoADmC
+    TkO8CnancQF3E2zEBE0pjqDTaF4ESdAJRrlZFG5iHfSMCz5ErUE/IWtRS9ACqcnQZwSW2NChipbqUZODqMMwvBjUUnwGSSdKCTXY/hh8hQIGtfgcDMEWXIRs
+    dzsImhS7zlIMJI86OIRWpr0NixCAbEOKh0F4xRvgCVVtWyRogddA7ka88U8Q6ih1tyWLEICv3FEB6akOdZQ1tkdHLZAGdPyHfu3pBbCj8iR6V78OegK8Yt
+    FnaFMDOqo0ylEzeoNyAyT8BX9+/xyYGc7YpkUIwBvAnornfghCM6PmtmsRApA51b+xgXaU2io76sANbQR8gmfgGAl3vI0iNDdSx0BPJexNhi5CM4NAkEc
+    5KOT34yQwNnnsCByKkEUxMyMt58NzkkZOG3l/Ow+dooSZXdSL9q6wUEcgOGczKosdwKbbrJph594/wNftExt5EU+IQwnVU/B2hoGSF3iKyi/sNBM78v5Aw
+    9dKbAIR3nuXCJnL2H+TLCbDrP19Mwi+iQRCJIo4BG+Bq+AQdoXhM3SEiFU5BflDZYwQkIbPMEGPbXMqXqEThDluFuXbRsCQzwJzipED/21vKpQ+ypeNgGGC79tCLP5GJaiDGxMykuWPgiHZlvEcRsve+VIKkuGPRIYLcKMB+XAfyM5kNKQyTBQME2nNfihqxmYAstwy2r4wEoa8ATb7iMUoEM9QSHYmIoamrbHVVEJTU+AMVcQDCdEwJGcqukuE9VC2sxMy7LDoanoLlPQOMcEWDcMEDXKnEkrkdoqlpFExdNT01DtBuLlHLsVExJDvsqhOH2RJqTvUJGlEDBPllK2mCJnTM7skWkKu+EbFkNTskmnTezIDLEPO+17beVJUDEcy2kLUQdVeRfQV0THkOyA3nPe6EHsMCGiQaxUkSGByyH8a54uCj6NnssogrPHsEVu2NyzM0ctNlYZMKSxauL4CUmMVSu5XkD+YnheQArcne/OLtjUE4Cu5VN9Hhpw87qdyGCUEuEksej14CnZOMtbBBJKm/ZQAMD8O9xeed1CHII2ImfWMAvzCdhf5Q28EQdhNpaI8g4iKdArF1IArI0p92+rafwJdt/NRHg/WAlOqTrazpPY+yImKYEyhKY38nCUKYFTT9GZMYcyGGZhEAxgOeYzb8lj7+2jh7PNTnhjCDMb2nS/5E8owk4HAUN4lEZpClL0z1O1UKZXaMYa2Q8wzXnYXA+AOxzvGEFTZBC8uvwcd/o4xhC7fS5ENJGkK811yh6ZDBPsnT6kawBA9SRMtYKoGgSF6KiFawARKzNAG2FrsVuDtht6eNhf7L8O/heH+29J99oe7GtMUPMc0+x+X7v/eYv/3h3/BHn//8zT7n2vb/3zp/ue8979usYu1JxKp9rTD9UPJG0GnBox155Ck/SKMGrC/Or5fhFHH93MWQ6X8Qm2gn8WgEc9i+D1P4xMhnKfxeybKJ3DORMFuJ54PJ/o81xY6Q+RzbfhnEydBMESPptDPJsLzpSnk86XgsC5xlMTDEWCI3NAP/Xwp9hlhYLSPrr8e4ODrtU0R2U1hnBHGPecN7+UevVS/4qD6YjNEundsAeOcN+5Zfcem/TjAYnjww/60jGrDcc7qY963MD2+/azkPzhCrP6TtP+uqB4fKinitSC8OzOJ9L0dW0y/YTH8NrU+jHLx2AbWnRkYuKHee3IedvSCQfDrV7AMVdTzqXwD594T3t01U2HAQkw+ogux+pgEzgLRgmPeXcO7f2gCLPrpLwyGv6bAvCHqDeb9Q7w7pObjQL6ESKJb04MkVkSDfYcU6x7wMm+JbmugnUG/L4d7DxjrLrcJ+gEOM3hEZPgIPqY8oPpgsHFCv8uNdR8/sbwfP71GE2L1eurneXmcnrQYPRXsRz6AThXJSxSK1UuwCgsPqDqD31PB7YuB6jCyzkAKBI9RhTqK7p789MX4Ajq1FeqoIcY96L2J5PaBsydKyPGMn94mGP1pbMAuM+ZS/OlViNWfYBEid7bx2Z8Gp8eQhXQbNvybXntkCK0MwbYRAwxYvScwewxh9YmyQN6rLsXPxVh1Caqo5z/89onC6vVlP7hyB53i9OXgM4rVgxdIUGmg5oJhry8f3XadlXiMqjwd2CuOOCI+cRrVSwIYGYKiUHej/vu1uT33kBsIk4Y7bit5/QcxVg+uk/B9FIfaBY2vKL577uH3TUxnXYpT4vsHHKsH34mpQxC9mz2pBdA3Eb/3JWmU3GlbU+LbQfU1yWr18ZvLj1BKyH3sgul96aN/KdlpLNPD0+TL90eTpYuDx+8vSZcfkWl00GsVwfQv9dGDlq/csy4F4mia/PHz1/fLy38uL7//+vkjOT1a/id7j15RC6oHrZ8+wjx/zC7HNNosp9NkMmn+PFr95wJ7jD44Krg+wm4v6BRO4XLxwCnEn6FwDwucUmwqqF7Q/vp58+ns+I8cFW6cxZnNGmQ/b5892cnE6IH9qCKVYR+yCazfGmhPdr999Um+m5PZ11PUKUVl5VyXxzqW5GS5A+qr7382Ap/mjck4L3NqplQoFEoZlZPz44lBYs4O5iuFYGcjBDHfgifpRTc7y2nz+VzLzbLdBc5gaweBz7cIZkYJb02LT1uwpsn7OI3kRGtEcDNKVubMbEHzeXqygTkzf8GsoG2c93Qe8GRZfd9ndv0Fc9f+gtl5a/MPo6GY3vD8w+Uc2b2dYWlSdOeQRnDMnZxsfg6pNWoVDsvd11myKwOP1XooE6tdgpU6DNU2PvI4qpnOSlgznVfncrP7OZc7gtnq5Ops9Y34wdfoMTBGJdSUsXm3QXfv4BIkRGYDkcx7GFw1XU2dlDerqXx54mpoM+hg+2PoF66myg3D1+icT/iRRsM5FpAXLkIj+MWK4ByKirkaNxWKk5XcMhe5qUjtI9SKRefRGQUjZ+0BPHlMOSuQKDYDTFl4g/7sairFNbKBc+R5o+9W6AjhOUwNddCSHJtKKOxDsMvRXIB11lVQMai8KCoGN64YzeVYN+igOPK0UeeWRR3hJvD9vGfcHrqrkShw42wiAEHyJJ8dr/ArIp+rDBSm3xCXcmQb7QVmHtvll160+0v9NBU0VB/xHmrnS1U1t/+KZvDYgjQ/aWiEvFKsEs5DN6HvoCVIKxwzcmPSwUnZ8yTdnfXlzLKCk5eisjBvMBSl/ApJlU3NumWUOX88SZa7sztWXa01SsWNb5S8Qz8TV+Rok8xro045TX7qJ3meTJc7Iy3Fqqv1t7wknkW9ANehD8UVm2ORLMlyf942OiRNvs/TqtTQ6YXRnvdVubRGTxSaw+3iZ+P2SigSa6AKslxK1SejbKfM27UnCOtFuZMdTeop8y2F9eIpURSusA7EhoDev+KhSLwCpagyx7Jyalyfa7ncJJfT5vVxSmZZTn5dGTZh/obfIe0CsaC3bhjpDUnI1Cr/ZtSMVQh+ywzQk5ib1haq5zoGrXPmrSQ9wKR3NYwuPkPC4PY0LzQRWObFpiCe3u4IPQC9dvb8HyMVxfxn7MSixORPz2pbr5zvQB+0nm4kRpBsca5TtV6JTUlghPOn1mAX2S0xOGk9naYYhhFWYb5OnT61TnZKMT+BPujVTJxYP3o7LrUYMWLEiBEjRowYMWLEiBFj+/A/D2LefzsklngAAAAASUVORK5CYII="
+         style="width:30px; height:30px; margin-top:10px; margin-left:180px;">
+    <a style="font-size:20px;">나의 BMI</a>
+    <p style="text-align:center; margin-top:100px; font-size:35px;">{{ bmi|floatformat:2 }}</p><br>
+    <p style="text-align:center; font-size:17px;">
+        {% if bmi < 18.5 %}
+            <span>저체중</span>
+        {% elif bmi >= 18.5 and bmi <= 22.9 %}
+            <span>정상체중</span>
+        {% elif bmi >= 23 and bmi <= 24.9 %}
+            <span>과체중</span>
+        {% elif bmi >= 25 and bmi <= 29.9 %}
+            <span>비만</span>
+        {% elif bmi >= 30.0 %}
+            <span>고도비만</span>
+        {% endif %}
+
+    </p>
+    <p style="text-align:center; font-size:12px;">
+        BMI 계산 기준
+    </p>
+    <p style="text-align:center; font-size:12px; font-weight:lighter;">
+        18.5 미만:저체중 / 18.5 ~ 22.9:정상체중<br>
+        23 ~ 24.9:과체중 /25 ~ 29.9:비만 <br>
+        30.0 이상:고도비만
+    </p>
+  <a href="#"><button type="submit" class="btn btn-primary" style="background-color: #333333;
+                                color: #ffffff;
+                                font-size: 13px;
+                                font-weight: bold;
+                                text-align: center;
+                                line-height: 40px;
+                                width:100px;
+                                border:none;
+                                height:40px;
+                                border-radius: 10px;
+                                margin-left:190px; margin-top:40px;" onclick="win_close()">확인</button></a>
+
+</body>
+</html>
