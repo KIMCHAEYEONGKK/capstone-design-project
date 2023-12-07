@@ -43,7 +43,6 @@ def exercise_upper(request):
 @login_required(login_url="accounts:login")
 def exercise_low(request):
     exercises_low = Exercise_low.objects.all()
-
     if request.method =="POST":
             Exercises_l = Exercise_low_l()
             Exercises_l.exercise_name = request.POST['exercise_name']
@@ -58,7 +57,10 @@ def exercise_list(request):
     exercises_c_l = Exercise_cardio_l.objects.all()
     exercises_low_l = Exercise_low_l.objects.all()
     exercises_u_l = Exercise_upper_l.objects.all()
-    sets = Setting.objects.get(user=request.user)
+    try:
+        sets = Setting.objects.get(user=request.user)
+    except Setting.DoesNotExist:
+        return redirect('exercise:exercise')
     exercise_l_sum = Exercise_low_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']
     exercise_c_sum = Exercise_cardio_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']
     exercise_u_sum = Exercise_upper_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']
@@ -78,19 +80,7 @@ def exercise_list(request):
         exercise_l_sum = 0
 
     arr=sum([exercise_l_sum,exercise_c_sum,exercise_u_sum])
-    # for dic in myList:
-    #     arr += dic
 
-
-
-
-    # for exercise_c_calorie_l in exercises_c_l:
-    #     dict_list[exercise_c_calorie_l] += exercise_c_calorie_l
-    # for exercise_u_calorie_l in exercises_u_l:
-    #     dict_list[exercise_u_calorie_l] += exercise_u_calorie_l
-    # for exercise_l_calorie_l in exercises_low_l:
-    #     dict_list[exercise_l_calorie_l] += exercise_l_calorie_l
-    #
 
 
     return render(request, 'exercise/exercise_list.html',

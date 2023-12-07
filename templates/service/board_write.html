@@ -185,7 +185,7 @@
 
         .in_header, .con_wrap{
             max-width: 1500px;
-            width: 75%;
+            width: 85%;
             background-color: #ffffff;
             margin: 0 auto;
             display: flex;
@@ -232,7 +232,7 @@
             height: 100px;
             background-color: #ffffff;
             text-align: center;
-            line-height: 80px;
+            line-height: 90px;
             z-index: 1;
             position: fixed;
             box-shadow: 1px 1px 3px #d1d1d1;
@@ -251,7 +251,7 @@
             font-size: 30px;
             font-weight: 900;
             text-align: center;
-            line-height: 80px;
+            line-height: 90px;
 
         }
 
@@ -261,7 +261,8 @@
             background-color: #ffffff;
             font-size: 22px;
             display: flex;
-            line-height: 80px;
+            line-height: 90px;
+            margin: 0 auto;
 
         }
 
@@ -274,7 +275,7 @@
             width: 300px;
             height: 80px;
             display: flex;
-            line-height: 80px;
+            line-height: 90px;
         }
 
         .nav>li{
@@ -757,15 +758,14 @@
             <div class="in_header">
                 <div class="logo"><a href="{% url 'accounts:home' %}">LOGO</a></div>
 
+                {% if request.user.is_authenticated %}
                 <ul class="gnb">
-                    {% if request.user.is_authenticated %}
-
                         <li class="top_menu">
-                            <a href="{% url 'exercise:exercise_list' %}" >Health</a>
+                            <a href="{% url 'exercise:exercise' %}" >Health</a>
 
                         </li>
                         <li class="top_menu">
-                            <a href="{% url 'food:food_list' %}">Food</a>
+                            <a href="{% url 'food:food' %}">Food</a>
 
                         </li>
                         <li class="top_menu">
@@ -774,14 +774,17 @@
                         </li>
                         <li class="top_menu">
                             <a href="{% url 'service:board_list' %}">Service</a>
-
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
-                            <li><a href="{% url 'accounts:main1' %}">logout</a></li>
-                        </div>
+                </ul>
+                <div class="nav">
+                    <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+                    <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+                </div>
 
-                    {% else %}
+
+                {% else %}
+                    <ul>
+
 
                         <li class="top_menu">
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a>
@@ -799,14 +802,15 @@
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
 
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
-                        </div>
+                    </ul>
 
 
-                    {% endif %}
-                </ul>
+                    <div class="nav">
+                        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                    </div>
+
+                {% endif %}
 
 
 
@@ -842,7 +846,7 @@
                 <form method="post" action="{% url 'service:board_write' %}">
                     {% csrf_token %}
 
-                        <p class="h3 mb-3 fw-normal" style="text-align:center; padding-top:10px;">게시판
+                        <p class="h3 mb-3 fw-normal" style="text-align:center; padding-top:70px;">게시판
                         </p>
                         <div class="mb-3">
                             제목

@@ -109,7 +109,7 @@ def home(request):
     try:
         sets = Setting.objects.get(user=request.user)
     except:
-        return redirect('accounts:main')
+        return redirect('accounts:main1')
     foods = Food.objects.all()
     M_Foods = Food_morning.objects.all()
     L_Foods = Food_lunch.objects.all()

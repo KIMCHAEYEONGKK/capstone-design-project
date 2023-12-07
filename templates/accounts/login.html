@@ -116,7 +116,7 @@
             font-size: 30px;
             font-weight: 900;
             text-align: center;
-            line-height: 80px;
+            line-height: 90px;
 
         }
 
@@ -127,6 +127,7 @@
             font-size: 22px;
             display: flex;
             line-height: 90px;
+            margin: 0 auto;
 
         }
 
@@ -139,7 +140,7 @@
             width: 200px;
             height: 80px;
             display: flex;
-            line-height: 80px;
+            line-height: 89px;
         }
 
         .nav>li{
@@ -754,14 +755,14 @@
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
 
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
-                        </div>
 
 
 
                 </ul>
+                <div class="nav">
+                    <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                </div>
 
 
 
@@ -775,10 +776,11 @@
                         <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Food</a></li>
                         <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Inbody</a></li>
                         <li><a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a></li>
-                        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
-                        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+
 
                     </ul>
+                    <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
                 </div>
             </div>
         </header>

@@ -111,7 +111,7 @@
             background-color: white;
             text-align: center;
             line-height: 80px;
-            z-index: 1;
+            z-index: 999;
             position: fixed;
             box-shadow: 1px 1px 3px #c5c5c5;
 
@@ -129,7 +129,7 @@
             font-size: 30px;
             font-weight: 900;
             text-align: center;
-            line-height: 80px;
+            line-height: 90px;
 
         }
 
@@ -140,6 +140,7 @@
             font-size: 22px;
             display: flex;
             line-height: 90px;
+            margin: 0 auto;
 
         }
 
@@ -152,7 +153,7 @@
             width: 200px;
             height: 80px;
             display: flex;
-            line-height: 80px;
+            line-height: 90px;
         }
 
         .nav>li{
@@ -191,13 +192,13 @@
 
         .sec_2_title>h1{
             width: 1300px;
-            font-size: 25px;
+            font-size: 35px;
             margin-bottom: 10px;
         }
 
         .sec_2_title>h3{
 
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 500;
             letter-spacing: -2px;
             margin-bottom: 50px;
@@ -225,14 +226,16 @@
             font-size: 20px;
             font-weight: 400;
             letter-spacing: -2px;
+            line-height: 1.6;
         }
 
         .con_2_img{
-            width: 200px;
-            height: 200px;
-            position: absolute;
-            right: 100px;
-            bottom: 100px;
+               width: 160px;
+
+                position: absolute;
+                 right: 100px;
+            bottom: 80px;
+}
 
         }
 
@@ -242,12 +245,7 @@
         /* section_2 end */
 
 
-        .section_3{
-            height: 300px;
-            background-color: rgb(34, 43, 122);
-        }
 
-        /* section_3 end */
 
 
         .section_4{
@@ -257,7 +255,7 @@
 
         .con_4{
             width: 48%;
-            height: 700px;
+            height: 300px;
             border-radius: 10px;
             background-color: white;
             box-shadow: 2px 2px 10px #dedede;
@@ -267,7 +265,7 @@
         .con_4>h1{
             width: 1300px;
             font-size: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
         }
 
         .con_4>h3{
@@ -276,6 +274,7 @@
             font-weight: 500;
             letter-spacing: -2px;
             margin-bottom: 50px;
+            line-height: 1.5;
         }
 
         /* section_4 end */
@@ -287,6 +286,7 @@
             color: white;
             padding: 30px 50px;
             box-sizing: border-box;
+             margin-top: 100px;
 
         }
 
@@ -499,7 +499,7 @@
             /* section_2 end */
 
             .con_4{
-                height: 600px;
+                height: 300px;
             }
 
             /* section_4 end */
@@ -604,6 +604,14 @@
                 padding: 40px 20px;
              }
 
+             .con_2_img {
+                width: 160px;
+                position: absolute;
+
+                bottom: 80px;
+                left: 190px;
+            }
+
              .con_2_text{
                 margin-left: 20px;
              }
@@ -619,7 +627,7 @@
 
              .con_4{
                 width: 100%;
-                height: 600px;
+                height: 300px;
                 margin-bottom: 20px;
              }
 
@@ -627,6 +635,7 @@
 
               footer{
                 height: 250px;
+                margin-top: 300px;
 
               }
 
@@ -739,7 +748,7 @@
 
 </head>
 <body>
-    <div class="wrap" style='width:1540px;'>
+    <div class="wrap" style='width:100%; overflow-x: hidden;'>
         <header>
             <div class="in_header">
                 <div class="logo"><a href="{% url 'accounts:main1' %}">LOGO</a></div>
@@ -762,14 +771,13 @@
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
 
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
-                        </div>
-
 
 
                 </ul>
+                <div class="nav">
+                    <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                </div>
 
 
 
@@ -791,7 +799,7 @@
             </div>
         </header>
         <div id='calendar-container'>
-            <div id='calendar' style="width:1300px; padding-left:200px; padding-top:230px; height:1200px;">
+            <div id='calendar' style="width:1300px; padding-left:200px; padding-top:230px; height:1200px; margin-left: 80px;">
             </div>
         </div>
         <script>
@@ -929,11 +937,12 @@
                     <li>
                         <div class="con_2_text">
                             <h2>Health</h2>
-                            <h3>요일별 맞춤형 운동 제공</h3>
-
+                            <h3>• 부위별(유산소,상체,하체)로 나눠서 기록</h3>
+                            <h3>• 하루 소모한 칼로리 계산</h3>
+                            <h3>• 부위별 영상 추천</h3>
                         </div>
                         <div class="con_2_img">
-                            <img src="health2_icon.png" alt="health.icon">
+                            <img src="https://img.icons8.com/ios/50/dumbbell--v1.png" alt="dumbbell--v1"/>
                         </div>
 
                     </li>
@@ -943,12 +952,14 @@
                     <li>
                         <div class="con_2_text">
                             <h2>Food</h2>
-                            <h3>요일별 맞춤형 식단 제공</h3>
+                            <h3>• 아침,점심 저녁으로 나눠서 기록</h3>
+                            <h3>• 하루 섭취한 칼로리 계산</h3>
+                            <h3>• 식단별 영상 추천</h3>
 
                         </div>
                         <div class="con_2_img">
-<!--                            <img src="food2_icon.jpg" alt="food.icon">-->
-                            <link rel="food.icon" href="%ACCOUNT_URL%/food_2_icon.jpg">
+
+                            <img src="https://img.icons8.com/ios/50/cutlery.png" alt="cutlery"/>
                         </div>
                     </li>
                 </div>
@@ -956,11 +967,13 @@
                     <li>
                         <div class="con_2_text">
                             <h2>Inbody</h2>
-                            <h3>인바디</h3>
+                            <h3>• 목표 날짜 D-day 계산</h3>
+                            <h3>• 인바디 정보 기록 및 수정</h3>
+
 
                         </div>
                         <div class="con_2_img">
-                            <img src="inbody2_icon.png" alt="inbody.icon">
+                           <img  src="https://img.icons8.com/ios/100/scale.png" alt="scale"/>
                         </div>
                     </li>
                 </div>
@@ -977,7 +990,7 @@
 
         <!-- section_2 end -->
 
-        <section class="section_3"></section>
+
 
         <!-- section_3 end -->
 
@@ -986,7 +999,7 @@
                 <div class="con_4">
                     <h1>매일 달라지는 플랜</h1>
                     <h3>어떤 운동을 해야할지 고민할 필요 없이<br>
-                        매일 다른 운동을 추천해줘요.</h3>
+                        매일 다른 운동을 추천</h3>
 
                 </div>
                 <div class="con_4">

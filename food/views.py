@@ -26,7 +26,10 @@ def food_list(request):
     exercises_c_l = Exercise_cardio_l.objects.all()
     exercises_low_l = Exercise_low_l.objects.all()
     exercises_u_l = Exercise_upper_l.objects.all()
-    sets = Setting.objects.get(user=request.user)
+    try:
+        sets = Setting.objects.get(user=request.user)
+    except Setting.DoesNotExist:
+        return redirect('food:food')
     exercise_l_sum = Exercise_low_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']
     exercise_c_sum = Exercise_cardio_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']
     exercise_u_sum = Exercise_upper_l.objects.aggregate(Sum('exercise_calorie'))['exercise_calorie__sum']

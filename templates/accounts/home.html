@@ -60,7 +60,7 @@
         .in_header,
         .con_wrap {
             max-width: 1500px;
-            width: 75%;
+            width: 85%;
             background-color: white;
             margin: 0 auto;
             display: flex;
@@ -132,7 +132,7 @@
             font-size: 30px;
             font-weight: 900;
             text-align: center;
-            line-height: 80px;
+            line-height: 90px;
 
         }
 
@@ -142,7 +142,8 @@
             background-color: white;
             font-size: 20px;
             display: flex;
-            line-height: 80px;
+            line-height: 90px;
+            margin: 0 auto;
 
         }
 
@@ -155,7 +156,7 @@
             width: 300px;
             height: 80px;
             display: flex;
-            line-height: 80px;
+            line-height: 90px;
         }
 
         .nav>li {
@@ -1132,9 +1133,8 @@
             <div class="in_header">
                 <div class="logo"><a href="{% url 'accounts:home' %}">LOGO</a></div>
 
+                {% if request.user.is_authenticated %}
                 <ul class="gnb">
-                    {% if request.user.is_authenticated %}
-
                         <li class="top_menu">
                             <a href="{% url 'exercise:exercise' %}" >Health</a>
 
@@ -1150,12 +1150,16 @@
                         <li class="top_menu">
                             <a href="{% url 'service:board_list' %}">Service</a>
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
-                            <li><a href="{% url 'accounts:main1' %}">logout</a></li>
-                        </div>
+                </ul>
+                <div class="nav">
+                    <li><a href="{% url 'setting:inbody_detail' %}">{{ request.user }}</a></li>
+                    <li><a href="{% url 'accounts:main1' %}">logout</a></li>
+                </div>
 
-                    {% else %}
+
+                {% else %}
+                    <ul>
+
 
                         <li class="top_menu">
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Health</a>
@@ -1173,14 +1177,16 @@
                             <a href="#" onclick="alert('로그인 후 이용해주세요.')">Service</a>
 
                         </li>
-                        <div class="nav">
-                            <li><a href="{% url 'accounts:login' %}">Log in</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
-                        </div>
+                    </ul>
 
 
-                    {% endif %}
-                </ul>
+                    <div class="nav">
+                        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
+                        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+                    </div>
+
+                {% endif %}
+
 
 
 
