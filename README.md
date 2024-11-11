@@ -2,4 +2,4 @@
 <img width="1229" alt="스크린샷 2024-03-27 오후 7 24 16" src="https://github.com/KIMCHAEYEONGKK/capstone-project2/assets/105264853/ef6760cf-6ca6-47e0-87c5-5bbf663f1cfa">
 <img width="1229" alt="스크린샷 2024-03-27 오후 7 24 33" src="https://github.com/KIMCHAEYEONGKK/capstone-project2/assets/105264853/14895291-5603-4482-9a6d-242ebe8e2318">
 <img width="1229" alt="스크린샷 2024-03-27 오후 7 24 39" src="https://github.com/KIMCHAEYEONGKK/capstone-project2/assets/105264853/b1c2e5a6-1b16-424f-948a-0a4de61b558f">
-<img width="80%" src="https://github.com/user-attachments/assets/38e9d0f2-70dd-4c3d-9349-447b62bd2123"/>
+<img width="80%" src="https://user-images.githubusercontent.com/91679614/209783995-44d3aae3-42a2-4fab-b8b6-daddf1b94073"/>
